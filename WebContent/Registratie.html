@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="Stijl1.css">
+<title>REGISTRATIE</title>
+</head>
+<body>
+<h1>Actief op de markt</h1>
+<h2>Registratie</h2>
+<br></br>
+<div>
+<form id="form" name="regpersoon">
+	<fieldset>
+	<table>
+	<legend>Persoonlijke informatie:</legend>
+	<tr>
+		<td>Voornaam:</td>
+		<td><input type="text" name="firstName"></td>
+	</tr>
+	<tr>
+		<td>Achternaam:</td>
+		<td><input type="text" name="lastName"><br></br></td>
+	</tr>
+	<tr>
+		<td>Emailadres:</td>
+		<td><input type="text" name="emailadres"><br></br></td>
+	</tr>
+	<tr>
+		<td><input id="submit" onclick="formSubmit()" type="button" value="SubmitformSubmit"></td>
+	</tr>
+	<tr>
+		<td><input id="submit" onclick="readForm()" type="button" value="SubmitreadForm"></td>
+	</tr>
+	</table>
+	</fieldset>
+
+</form>
+</div>
+<script>
+function readForm() {
+    var x = document.getElementById("regPersoon").elements[0].value;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/restService/rest/HelloWorld/person/1", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({firstName:firstName, lastName:lastName})); 
+}
+function formSubmit() {
+  var firstName = document.getElementById("firstName").value;
+  var lastName = document.getElementById("lastName").value;
+		
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/restService/rest/HelloWorld/person/1", true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.send(JSON.stringify({firstName:firstName, lastName:lastName}));
+}
+
+</script>
+>
+
+
+</body>
+</html>

@@ -14,8 +14,7 @@ public class Aanbieder {
 	 * Een aanbieder kan één of meerdere items op de markt aanbieden.
 	 */
 	//variabelen
-	private static int aantalAanbieders;
-	private final int aanbiederId;
+	private int aanbiederId;
 	private String abNaam;
 	private String personId;
 	private ArrayList aangebodenItems;
@@ -24,13 +23,7 @@ public class Aanbieder {
 	//methods
 	//constructor
 	public Aanbieder() {
-		aantalAanbieders = aantalAanbieders + 1 ;
-		aanbiederId = aantalAanbieders;
-	}
-
-	public static int getAantalAanbieders() {
-		return aantalAanbieders;
-	}
+		}
 
 	public int getAanbiederId() {
 		return aanbiederId;

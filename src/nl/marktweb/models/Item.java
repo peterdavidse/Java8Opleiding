@@ -3,61 +3,75 @@
  */
 package nl.marktweb.models;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 /**
  * @author Peter Davidse
  * oktober 2016, java 8 opleiding
  */
-public class Item {
+@Entity
+@Table (name = "Item")
+public class Item  implements Serializable{
 
 	/** Een Item kan worden aangeboden op de markt.
 	 * 
 	 */
+	@Id
+	@SequenceGenerator(name = "MarktSequence", sequenceName = "Markt_Item")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="MarktSequence")
 	//variabelen
-	private static int aantalItems;
-	private int itemId; // moet uniek zijn
-	private String Titel;
-	private String Omschrijving;
-	// TODO private XXXX Foto; ;
+	private int Id; // moet uniek zijn
+	private String titel;
+	private String omschrijving;
+	private String foto;
 	private Double prijs;
-	private int aanbiederId = -10; // geinitialiseerd op -10, echte aanbiederId nog niet bekend
-	private int status; // 0 = default bij aanmaken, 1 = in aanbieding , 2 = verkocht  
+	private String status; // in aanbieding , verkocht  
 	//methodes
-	//constructor
-	public Item() {
-		aantalItems ++= ; // verhoogd aantalItems in de klasse met 1
-		itemId = aantalItems; //gebruikt het aantalItems als id voor dit item
-	}
+
 	//getters en setters
-	public int getItemId() {
-		return itemId;
+	public int getId() {
+		return Id;
 	}
 	public String getTitel() {
-		return Titel;
+		return titel;
 	}
-	public void setTitel(String titel) {
-		Titel = titel;
+	public void setTitel(String atitel) {
+		 titel = atitel;
 	}
 	public String getOmschrijving() {
-		return Omschrijving;
+		return omschrijving;
 	}
-	public void setOmschrijving(String omschrijving) {
-		Omschrijving = omschrijving;
+	public void setOmschrijving(String anOmschrijving) {
+		omschrijving = anOmschrijving;
 	}
 	public Double getPrijs() {
 		return prijs;
 	}
-	public void setPrijs(Double prijs) throws Exception {
+	public void setPrijs(Double aPrijs) throws Exception {
 		try
-		{this.prijs = prijs;
+		{prijs = aPrijs;
 		}
 		catch (Exception e)
 		{System.out.println("De ingevoerde prijs is fout.");
 		}
 	}
-	public int getAanbiederId() {
-		return aanbiederId;
+	public String getStatus() {
+		return status;
 	}
-	public void setAanbiederId(int aanbiederId) {
-		this.aanbiederId = aanbiederId;
+	public void setStatus(String astatus) {
+		status = astatus;
 	}
-}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String afoto) {
+		foto = afoto;
+	}
+	}

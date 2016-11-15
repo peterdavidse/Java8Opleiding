@@ -1,111 +1,85 @@
 package nl.marktweb.models;
+
 import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Person")
+
 public class Person implements Serializable {
-	//variabelen
-	private static int aantalPersonenStart; // Teller aantal personen die zich hebben willen registreren
-	private static int aantalPersonenRegistered; // Teller aantal personen waarvan de registratie is afgerond
-	final private int personId;
-	private String firstName;	//in eerste scrum
-	private String lastName;    //in eerste scrum
-	private String email;       //in eerste scrum
-	private String adresStraat;
-	private String adresHuisnummer;
-	private String adresPlaats;
-	private String adresLand;
-	private String telefoonnummer;
-	private char koper = 'N' ; // default geen koper apart koperId toevoegen?
-	private char aanbieder = 'N';
 	
-	//methodes
-	//getters
-	public int getAantalPersonenStart(){
-		return aantalPersonenStart;
+	@Id
+	@SequenceGenerator(name = "PersonSequence", sequenceName = "Person_Item")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="PersonSequence")
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String photo;
+		
+	public Person() {}
+	
+	public Person(String aFirstName, String aLastName) {
+		setFirstName(aFirstName);
+		setLastName(aLastName);
 	}
-	public int getAantalPersonenRegistered(){
-		return aantalPersonenRegistered;
+	
+	public Person(String aFirstName, String aLastName, String anEmail) {
+		setFirstName(aFirstName);
+		setLastName(aLastName);
+		setEmail(anEmail);
 	}
-	public int getPersonId() {
-		return personId;
+	
+	public Person(String aFirstName, String aLastName, String anEmail, String aPhoto) {
+		setFirstName(aFirstName);
+		setLastName(aLastName);
+		setEmail(anEmail);
+		setPhoto(aPhoto);
 	}
-	public String getFirstName(){
+	
+	private Long getid() {
+		return id;
+	}
+
+	public String getFirstName() {
 		return firstName;
 	}
-	public String getLastName(){
-		return lastName;
-	}
-	public String getEmail(){
-		return email;
-	}
-	public String getAdresSstraat(){
-		return getAdresStraat();
-	}
-	public String getAdresHuisnummer(){
-		return adresHuisnummer;
-	}
-	public String getAdresPlaats(){
-		return adresPlaats;
-	}
-	public String getAdresLand(){
-		return adresLand;
-	}
-	public String getTelefoonnummer(){
-		return telefoonnummer;
-	}
-	//setters
-	public void setFirstName(String firstName){
+
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public void setLastName(String lastName){
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public void setEmail(String email){
-		if (email.indexOf('@',0) > 0) //Er moet een @ in staan, en niet aan het begin
-		{
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
-		}
-		else 
-		{System.out.println("Fout in email. Pas het email adres aan.");}
 	}
-	//constructor
-	public Person (String inFirstName, String inLastName) {
-		aantalPersonenStart = aantalPersonenStart + 1; // Teller bij begin registratie (nog niet zeker dat registratie lukt)
-		personId = aantalPersonenStart;
-		setFirstName(inFirstName);
-		setLastName(inLastName);
+	public String toString() {
+	        return "Person id: " + getid() + " Voornaam: " + getFirstName() + " Achternaam " + getLastName() + "Emailadres "+ getEmail();
+	    }
+
+	public String getPhoto() {
+		return photo;
 	}
-	/**
-	 * @param telefoonnummer the telefoonnummer to set
-	 */
-	public void setTelefoonnummer(String telefoonnummer) {
-		this.telefoonnummer = telefoonnummer;
-	}
-	public String getAdresStraat() {
-		return adresStraat;
-	}
-	public void setAdresStraat(String adresStraat) {
-		this.adresStraat = adresStraat;
-	}
-	public void setAdresHuisnummer(String adresHuisnummer) {
-		this.adresHuisnummer = adresHuisnummer;
-	}
-	public void setAdresPlaats(String adresPlaats) {
-		this.adresPlaats = adresPlaats;
-	}
-	public void setAdresLand(String adresLand) {
-		this.adresLand = adresLand;
-	}
-	public char getKoper() {
-		return koper;
-	}
-	public void setKoper(char koper) {
-		this.koper = koper;
-	}
-	public char getAanbieder() {
-		return aanbieder;
-	}
-	public void setAanbieder(char aanbieder) {
-		this.aanbieder = aanbieder;
+
+	public void setPhoto(String aPhoto) {
+		this.photo = aPhoto;
 	}
 	
-		
 }

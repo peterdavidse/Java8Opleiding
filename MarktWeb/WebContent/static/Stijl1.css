@@ -1,0 +1,90 @@
+@CHARSET "ISO-8859-1";
+body {
+    background-color: white;
+}
+
+#header {
+	color: blue;
+	background-image: url("images/marktkraam5.jpg");
+    background-color: #cccccc;
+    background-size: 700px 500px;
+    background-repeat: no-repeat;
+    font-size: 2rem;
+    width: 100%;
+    height: 200px;
+      
+}
+#header h1 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin: 5px;
+}
+
+#maincontent { color: green
+}
+h2 {
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+    width: 97%
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	}
+
+li {
+    float: left;
+	}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	}
+
+li a:hover {
+    background-color: #111;
+	}
+	
+
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+legend {font-family: verdana;
+		color: green;
+		}	
+
+.ondertitels {
+	color: green;
+	font-family: verdana;
+    font-size: 20px
+    }
+
+img {
+    max-width: 50%;
+    height: auto;
+}
+.fotoklein {
+	position = relative;	
+}
+#footer {
+	left: 30px;
+	font-color: lightblue;
+	font-family: verdana;
+	font-size: 0.7rem;
+    padding: 20px;
+    border: none;
+    margin: 1;
+    width: 100%;
+    }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="Stijl1.css">
+<title>Item tonen</title>
+</head>
+<body>
+<h2>JSON Object Creation in JavaScript: ITEM</h2>
+
+<p id="item"></p>
+<img src="static/images/porscheZwart.jpg" alt="Foto van zwarte Porsche" height="35%" width="15%">
+
+<script>
+var text = '{"titel":"Porche","omschrijving":"Zwarte Porche, zo goed als nieuw.", "foto": <HTMLImageElement>, "prijs":"Uw eigendom voor 40.000 euro"}';
+
+var obj = JSON.parse(text);
+
+document.getElementById("item").innerHTML =
+obj.titel + "<br>" +
+obj.omschrijving + "<br>" +
+obj.prijs;
+</script>
+</body>
+</html>

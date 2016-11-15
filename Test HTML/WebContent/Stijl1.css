@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+body {
+    background-color: white;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+
+.ondertitels {
+	color: green;
+	font-family: verdana;
+    font-size: 20px
+    }
+Try it Yourself »

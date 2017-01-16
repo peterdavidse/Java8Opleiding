@@ -89,6 +89,7 @@ function submitItem() {
 	var foto = document.getElementById("foto").value;
 	var prijs = document.getElementById("prijs").value;
 	var status = document.getElementById("status").value;
+	var email = document.getElementById("email").value;
 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -105,6 +106,7 @@ function submitItem() {
 		foto : foto,
 		prijs : prijs,
 		status : status,
+		email : email,
 	}));
 }
 
@@ -114,11 +116,11 @@ function itemRegistered(item) {
 }
 
 function showItem(item) {
-	var text = "<p>" + "Titel" + item.titel + " Omschrijving: "
+	var text = "<p>" + "Titel: " + item.titel + " Omschrijving: "
 			+ item.omschrijving
 			+ " Foto: <img src=static/images/" + item.foto
-			+ ".jpg" + " Prijs:" + item.prijs + " Status:"
-			+ item.status + "</p>"
+			+ ".jpg>" + "</p><br>" +  " Prijs:" + item.prijs + "<br> E-mail aanbieder: " + item.email + "<br> Status:"
+			+ item.status 
 	document.getElementById("maincontent").innerHTML = text
 }
 
@@ -129,9 +131,12 @@ function toonItems() {
 			var json = JSON.parse(this.responseText)
 			var text = ""
 			for (var i = 0; i < json.length; i++) {
-				text +=  "<p>" + "Titel " + json[i].titel + " Omschrijving: "
-						+ json[i].omschrijving + " prijs:" + json[i].prijs + " Status:"
-						+ json[i].status + "</p>" + " Foto: <img src=static/images/"  + json[i].foto + ".jpg>"
+				text +=  "<p>" + "Titel: " + json[i].titel + "<br> Omschrijving: "
+						+ json[i].omschrijving + "<br> prijs:" + json[i].prijs  +"<br> Status:"
+						+ json[i].status + "</p>" + " Foto: <img src=static/images/"  + json[i].foto + ".jpg>" + "<br> E-mail aanbieder:" + json[i].email
+						+ "<a href='mailto:" + json[i].email +"'" + ">Send Mail </a>"
+						+ "<a href=\"mailto:" + json[i].email +"\"" + ">Send Mail2 </a>"
+						+ '<a href="mailto:' + json[i].email +'"' + '>Send Mail3 </a>';
 			}
 		}
 		document.getElementById("maincontent").innerHTML = text

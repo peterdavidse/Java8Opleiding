@@ -33,6 +33,7 @@ public class Item  implements Serializable{
 	private String foto;
 	private Double prijs;
 	private String status; // in aanbieding , verkocht  
+	private String email;
 	//methodes
 
 	//getters en setters
@@ -73,5 +74,11 @@ public class Item  implements Serializable{
 	}
 	public void setFoto(String afoto) {
 		foto = afoto;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	}
